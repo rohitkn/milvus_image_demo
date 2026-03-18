@@ -3,12 +3,12 @@
 This repo has some noteoboks and python files to help the audience install milvus on their computer, running with docker-compose.
 This will require having docker on your computer.
 
-## Pre-requisites. 
+## Prerequisites. 
 
 - Install docker and have docker-compose on the command line
 - Install Docker Desktop for ease of management
 - Be sure to install python and pip, with which to install the required libraries and dependencies
-- **Optional**: TODO
+- **Optional**: Install Jupyter notebook server, better though to use VSCode IDE
 
 
 ## What you can expect to learn
@@ -16,10 +16,12 @@ This will require having docker on your computer.
 1. Huggingface datasets
 1. Running Milvus
 1. Installing the Visualised BGE model on your python environment
-1. Downloading images on your computer from huggingface dataset which has image URLs
+1. Multi-threaded Downloading of images on your computer from huggingface dataset which has image URLs
 1. Multi-threaded way to create embeddings from the images
-1. Milvus Schemas and Indexing
 1. Curing data to be inserted in a Milvus collection
+1. Milvus Schemas and Indexing
+1. Milvus bulk_importing and milvus search operations
+
 
 **TODO**
 
@@ -29,11 +31,14 @@ Visit this url https://milvus.io/docs and go to the **Get Started** section.
 - See Install Milvus -> Run Milvus Standalone
 - Create a new directory to run Milvus and store files
 - Follow the instructions on this page https://milvus.io/docs/install_standalone-docker-compose.md
-- Get the file milvus-standalone-docker-compose.yml
+- Download the file `milvus-standalone-docker-compose.yml`
 - Run this command `sudo docker compose up -d`
-    - verify with docker ps or...
-    - Verify in Docker Desktop that these 3 containers are running with ports:
+    - verify with `docker ps` or...
+      - Verify in Docker Desktop that these 3 containers are running with ports:
     - `milvus-standalone` (19530, 9091), `milvus-etcd`, `milvus-minio` (9000, 9001)
+    - Visit your local milvus UI http://localhost:9091/webui
+    - Visit your local minio http://localhost:9001/login and login with *minioadmin* / *minioadmin*
+    - *minio simulates s3:// ie. cloud object storage*
 
 ### Libraries & Dependencies
 

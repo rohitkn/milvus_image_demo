@@ -1,0 +1,22 @@
+from visual_bge.modeling import Visualized_BGE
+import torch
+
+class Encoder:
+    def __init__(self, model_name: str, model_path: str):
+        self.model = Visualized_BGE(model_name_bge=model_name, model_weight=model_path)
+        self.model.eval()
+
+    def encode_query(self, image_path: str, text: str) -> list[float]:
+        with torch.no_grad():
+            query_emb = self.model.encode(image=image_path, text=text)
+        return query_emb.tolist()[0]
+
+    def encode_image(self, image_path: str, text: str) -> list[float]:
+        with torch.no_grad():
+            query_emb = self.model.encode(image=image_path, text = text)
+        return query_emb.tolist()[0]
+    
+    def encode_multi(self, image_paths: list[str]):
+        with torch.no_grad():
+            query_emb = self.model.encode(image=image_paths)
+        return query_emb.tolist()
